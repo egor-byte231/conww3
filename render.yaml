@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: conflict-nations-bot
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: 8045153949:AAH836YEkipQVEi1gs-BcsvnPGPQbFc0qgA
