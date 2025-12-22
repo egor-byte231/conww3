@@ -1,0 +1,9 @@
+{
+  "name": "NovaTune AI",
+  "description": "Advanced AI Music Player for Android",
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "geolocation"
+  ]
+}
