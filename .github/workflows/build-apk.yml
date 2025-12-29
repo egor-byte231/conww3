@@ -47,7 +47,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew :app:assembleDebug --stacktrace --info || exit 0
+          ./gradlew :app:assembleDebug --stacktrace --info
 
       # 7. Перевіряємо структуру build/outputs (для дебагу)
       - name: Show build folders
