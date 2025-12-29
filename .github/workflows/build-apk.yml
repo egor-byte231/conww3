@@ -29,6 +29,11 @@ jobs:
           cd android
           npm install
 
+      - name: Install React types for TypeScript
+        run: |
+          cd android
+          npm install --save-dev @types/react @types/react-dom
+
       - name: Build web (Vite)
         run: |
           cd android
