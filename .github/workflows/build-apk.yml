@@ -10,45 +10,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # 1. Клонуємо репозиторій
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Встановлюємо Node.js для збірки веб-частини
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 3. Встановлюємо Java для Gradle
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
+      # 4. Встановлюємо npm-залежності та типи для React
       - name: Install npm dependencies
         run: |
           cd android
           npm install
-
-      - name: Install React types for TypeScript
-        run: |
-          cd android
           npm install --save-dev @types/react @types/react-dom
 
+      # 5. Будуємо веб-частину через Vite
       - name: Build web (Vite)
         run: |
           cd android
           npm run build
 
+      # 6. Збираємо Android APK (debug)
       - name: Build APK (debug)
         run: |
           cd android
           chmod +x gradlew
           ./gradlew :app:assembleDebug --stacktrace --info
 
+      # 7. Перевіряємо структуру build/outputs
       - name: Show build folders
-        run: |
-          ls -R android/app || true
+        run: ls -R android/app/build/outputs || true
 
+      # 8. Завантажуємо APK як артефакт
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
