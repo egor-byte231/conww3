@@ -29,13 +29,6 @@ jobs:
         run: npm run build
         working-directory: android
 
-      - name: Add Android platform if missing
-        run: |
-          if [ ! -d "android/app" ]; then
-            npx cap add android
-          fi
-        working-directory: android
-
       - name: Copy web build to Android
         run: npx cap copy android
         working-directory: android
